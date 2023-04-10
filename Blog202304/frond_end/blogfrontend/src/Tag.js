@@ -7,7 +7,6 @@ function Tag() {
   const [page, setPage] = useState(0);
   const [pageSize] = useState(10);
   const [totalPages, setTotalPages] = useState(0);
-  const [selectedTag, setSelectedTag] = useState(null);
   const navigate = useNavigate();
 
   const getTags = async (page, size) => {
@@ -21,9 +20,8 @@ function Tag() {
   };
   useEffect(() => {
     getTags(page, pageSize);
-  }, []);
+  }, [page, pageSize]);
   const handleEdit = (tag) => {
-    setSelectedTag(tag);
     navigate('/tagInput', {state: {tag}});
   };
 
@@ -78,6 +76,7 @@ function Tag() {
                       disabled={page === totalPages - 1}
                   >下一頁
                   </button>
+
                 </td>
               </tr>
               </tfoot>

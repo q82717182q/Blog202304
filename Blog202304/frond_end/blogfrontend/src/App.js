@@ -1,5 +1,6 @@
-import React,{ useState } from "react";
+import React from "react";
 import NavComponent from "./component/navComponents";
+import FootComponent from "./component/footComponents";
 import Blog from "./Blog";
 import BlogInput from "./admin/BlogInput";
 import TypeInput from "./admin/TypeInput";
@@ -26,7 +27,7 @@ function App() {
         <Route path="/login" element={<Login />} />
 
       </Routes>
-
+      <FootComponent />
     </div>
   );
 }

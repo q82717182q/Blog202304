@@ -1,13 +1,12 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
-import {Link, useNavigate} from "react-router-dom";
+import { useNavigate} from "react-router-dom";
 
 function Type() {
   const [types, setTypes] = useState([]);
   const [page, setPage] = useState(0);
   const [pageSize] = useState(10);
   const [totalPages, setTotalPages] = useState(0);
-  const [selectedType, setSelectedType] = useState(null);
   const navigate = useNavigate();
   const getTypes = async (page, size) => {
     try {
@@ -20,9 +19,8 @@ function Type() {
   };
   useEffect(() => {
     getTypes(page, pageSize);
-  }, []);
+  }, [page, pageSize]);
   const handleEdit = (type) => {
-    setSelectedType(type);
     navigate('/typeInput', {state: {type}});
   };
 
