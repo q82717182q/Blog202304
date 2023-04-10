@@ -14,12 +14,11 @@ build/**
 log/**
 
 # IntelliJ
-*/.class
-*/.json
+*.class
+
 */.lock
 */.bin
-*.class
-*.json
+
 *.lock
 *.bin
 out/**
