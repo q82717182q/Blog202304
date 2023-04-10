@@ -31,6 +31,7 @@ public abstract class AbstractBaseEntity {
     @Column(name = "deleted")
     protected Boolean deleted;
 
+
     @PrePersist
     public void onCreate() {
         this.createTime = new Date();

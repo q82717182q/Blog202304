@@ -17,6 +17,13 @@ public class Tag extends AbstractBaseEntity {
   private String name;
   @ManyToMany(mappedBy = "tags")
   private List<Blog> blogs = new ArrayList<>();
+
+  public Tag() {
+  }
+
+  public Tag(String name) {
+    this.name = name;
+  }
 }
 
 

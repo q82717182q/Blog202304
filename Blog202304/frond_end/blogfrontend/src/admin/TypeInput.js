@@ -22,7 +22,7 @@ function TypeInput() {
     try {
       let response;
       if(editType){
-        response = await axios.post(`${TYPE_UPDATE}/${editType.id}`, {
+        response = await axios.put(`${TYPE_UPDATE}/${editType.id}`, {
           name
         });
         navigate('/type')

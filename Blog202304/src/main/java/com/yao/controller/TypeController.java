@@ -1,5 +1,6 @@
 package com.yao.controller;
 
+import com.yao.entity.Tag;
 import com.yao.entity.Type;
 import com.yao.service.TypeService;
 import lombok.extern.slf4j.Slf4j;
@@ -32,6 +33,17 @@ public class TypeController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         }
     }
+
+    @GetMapping("/page")
+    public ResponseEntity<?> findTypesWithPageSize(@RequestParam Integer page, Integer size){
+        try{
+            return ResponseEntity.ok(typeService.findTypesWithPageSize(page, size));
+        }catch (Exception e){
+            log.error("", e);
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
+
+    }
     @PostMapping
     public ResponseEntity<?> saveType(@RequestBody Type type){
         try {
@@ -42,4 +54,16 @@ public class TypeController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         }
     }
+    @PutMapping("/update/{typeId}")
+    public ResponseEntity<?> saveType(@PathVariable("typeId") Integer typeId, @RequestBody Type type){
+        try {
+            typeService.updateType(typeId, type.getName());
+            return ResponseEntity.ok("Type update successfully.");
+        }catch (Exception e){
+            log.error("", e);
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
+    }
 }
+
+
